@@ -46,3 +46,9 @@ where category="Kitchen Supplies"
 select item_name, stock_quantity
 from superstore
 where item_name="Air Purifier"
+
+show total value for item stock amount
+select item_name,
+price*stock_quantity as Total_Value
+from superstore
+order by item_name asc;
