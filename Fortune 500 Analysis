@@ -70,3 +70,32 @@ else "Not_Enough_PTO" end as "How_is_the_PTO"
 from fortune_companies
 order by paid_time_off_days desc;
 
+Company Retention
+select company_name, industry, avg_employee_tenure,
+case when avg_employee_tenure>=7 then "Great_Place_to_Work"
+when avg_employee_tenure>=6 then "Good_Place_to_Work"
+when avg_employee_tenure>=5 then "Ok_Place_to_Work"
+else "Not_worth_commitment" end as "Retention"
+from fortune_companies
+order by avg_employee_tenure asc;
+
+show employee tenure over 5 years
+select company_name, avg_employee_tenure
+from fortune_companies
+where avg_employee_tenure > 5
+order by avg_employee_tenure desc
+
+show employee tenure over 5 years and companies with more than 10 days of PTO
+select company_name, avg_employee_tenure, paid_time_off_days
+from fortune_companies
+where avg_employee_tenure > 5
+and paid_time_off_days >= 10
+order by avg_employee_tenure desc;
+
+show avg revenue for all companies
+select avg(revenue)
+from fortune_companies
+
+show how many total employees there are
+select sum(employees)
+from fortune_companies;
