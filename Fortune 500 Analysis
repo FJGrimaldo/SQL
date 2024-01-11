@@ -85,7 +85,7 @@ from fortune_companies
 where avg_employee_tenure > 5
 order by avg_employee_tenure desc
 
-show employee tenure over 5 years and companies with more than 10 days of PTO
+show employee tenure over 5 years and companies with 10 or more days of PTO
 select company_name, avg_employee_tenure, paid_time_off_days
 from fortune_companies
 where avg_employee_tenure > 5
