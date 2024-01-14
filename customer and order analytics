@@ -44,11 +44,6 @@ select distinct product, price
 from JanSales
 order by price asc limit 1
 
-select distinct product, price
-from JanSales
-group by product, price
-where price in (select min(price) from JanSales
-
 #5 What is the total revenue for each product sold in January
 select sum(quantity)*price as revenue, product
 from JanSales
