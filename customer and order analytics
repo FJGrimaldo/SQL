@@ -55,7 +55,7 @@ from FebSales
 where location = '548 Lincoln St, Seattle, WA 98101'
 group by product
 
-how many customers ordered more than 2 products at a time, and what was the average amount spent for those customers?
+#7 how many customers ordered more than 2 products at a time, and what was the average amount spent for those customers?
 select count(distinct cust.acctnum), avg(quantity*price)
 from FebSales feb
 left join customers cust
@@ -63,3 +63,34 @@ on feb.orderid = cust.order_id
 where feb.quantity>2
 and length(orderid) = 6
 and orderid <> 'Order ID';
+
+#8 select order dates from feb sales between 02/13/19 00:00 and 02/18/19 00:00
+select orderdate
+from FebSales
+where orderdate between '02/13/19 00:00' and '02/18/19 00:00'
+
+#9 select location from feb sales where order date is 02/18/19 01:35
+SELECT location
+FROM BIT_DB.FebSales 
+WHERE orderdate = '02/18/19 01:35'
+
+#10 show how mahy orders there where on 02/18/19
+SELECT sum(quantity)
+FROM BIT_DB.FebSales 
+WHERE orderdate like '02/18/19%'
+
+#11 show products that have batteries in the name for feb
+SELECT distinct Product
+FROM BIT_DB.FebSales
+WHERE Product like '%Batteries%'
+
+#12 show products that have prices that end in .99 for feb
+SELECT distinct Product, Price
+FROM BIT_DB.FebSales 
+WHERE Price like '%.99'
+
+#13 list products sold in Los Angeles in February
+select distinct product, sum(quantity)
+from FebSales
+where location like '%Los Angeles%'
+group by product
